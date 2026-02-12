@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hydra Computing | The AI Physics Company</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap');
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #020617; /* Slate 950 */
+            color: #f8fafc;
+        }
+
+        /* Custom Gradients */
+        .hero-gradient {
+            background: radial-gradient(circle at center, #1e3a8a 0%, #020617 70%);
+        }
+        
+        .tensor-grid {
+            background-image: linear-gradient(rgba(30, 58, 138, 0.1) 1px, transparent 1px),
+            linear-gradient(90deg, rgba(30, 58, 138, 0.1) 1px, transparent 1px);
+            background-size: 40px 40px;
+        }
+
+        .glass-card {
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+    </style>
+</head>
+<body class="antialiased">
+
+    <!-- Navigation -->
+    <nav class="fixed w-full z-50 glass-card border-b-0">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-20">
+                <div class="flex-shrink-0 flex items-center gap-3">
+                    <!-- Logo Image -->
+                    <img src="Hydra logo.png" alt="Hydra Computing Logo" class="h-12 w-auto filter invert brightness-200">
+                    <span class="font-bold text-xl tracking-wider text-white">HYDRA</span>
+                </div>
+                <div class="hidden md:block">
+                    <div class="ml-10 flex items-baseline space-x-8">
+                        <a href="#mission" class="hover:text-blue-400 transition-colors px-3 py-2 rounded-md text-sm font-medium">Mission</a>
+                        <a href="#technology" class="hover:text-blue-400 transition-colors px-3 py-2 rounded-md text-sm font-medium">Technology</a>
+                        <a href="#team" class="hover:text-blue-400 transition-colors px-3 py-2 rounded-md text-sm font-medium">Team</a>
+                        <a href="#contact" class="bg-blue-600 hover:bg-blue-700 text-white px-5 py-2 rounded-full text-sm font-medium transition-all">Contact Us</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <div class="relative min-h-screen flex items-center justify-center overflow-hidden hero-gradient tensor-grid pt-20">
+        <div class="absolute inset-0 z-0">
+            <!-- Animated abstract circles simulating tensor nodes -->
+            <div class="absolute top-1/4 left-1/4 w-96 h-96 bg-blue-600/20 rounded-full blur-3xl animate-pulse"></div>
+            <div class="absolute bottom-1/4 right-1/4 w-96 h-96 bg-indigo-600/10 rounded-full blur-3xl animate-pulse" style="animation-delay: 2s;"></div>
+        </div>
+        
+        <div class="relative z-10 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full glass-card mb-8">
+                <span class="w-2 h-2 bg-blue-500 rounded-full animate-ping"></span>
+                <span class="text-blue-200 text-sm font-medium">Entering the Angstrom Era</span>
+            </div>
+            <h1 class="text-5xl md:text-7xl font-bold tracking-tight mb-6 bg-clip-text text-transparent bg-gradient-to-r from-blue-100 to-blue-400">
+                The AI Physics Company
+            </h1>
+            <p class="mt-4 text-xl md:text-2xl text-slate-300 max-w-3xl mx-auto leading-relaxed">
+                Solving the "Computational Complexity Wall" of 2nm manufacturing with <span class="text-white font-semibold">Deterministic AI</span> and Tensor Network compression.
+            </p>
+            <div class="mt-10 flex justify-center gap-4">
+                <a href="#technology" class="bg-blue-600 hover:bg-blue-700 text-white px-8 py-4 rounded-lg font-semibold text-lg transition-all shadow-lg shadow-blue-900/50">
+                    Discover Our Engine
+                </a>
+                <a href="#team" class="glass-card hover:bg-white/5 text-white px-8 py-4 rounded-lg font-semibold text-lg transition-all">
+                    Meet the Team
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- The Problem / AI Positioning -->
+    <div id="mission" class="py-24 bg-slate-950 relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
+                <div>
+                    <h2 class="text-blue-500 font-semibold tracking-wide uppercase mb-3">The Challenge</h2>
+                    <h3 class="text-4xl font-bold text-white mb-6">The Wall at 2nm</h3>
+                    <p class="text-slate-400 text-lg mb-6">
+                        As chips shrink to the Angstrom scale, traditional simulation methods (FDTD, RCWA) have hit a computational bottleneck. They are too slow for the billions of polygons in a modern mask set.
+                    </p>
+                    <p class="text-slate-400 text-lg">
+                        The industry's current fallback is "Probabilistic AI"—models that guess the physics. But at 2nm, a guess is a gamble that leads to dead transistors.
+                    </p>
+                </div>
+                <div class="grid grid-cols-1 gap-6">
+                    <div class="glass-card p-6 rounded-xl border-l-4 border-blue-500">
+                        <h4 class="text-xl font-bold text-white mb-2">Legacy Solvers</h4>
+                        <p class="text-slate-400">Brute force. Slow. Exponentially expensive hardware costs.</p>
+                    </div>
+                    <div class="glass-card p-6 rounded-xl border-l-4 border-red-500">
+                        <h4 class="text-xl font-bold text-white mb-2">Probabilistic AI</h4>
+                        <p class="text-slate-400">Fast, but approximates reality. High risk of "hallucinating" physical interactions.</p>
+                    </div>
+                    <div class="bg-gradient-to-r from-blue-900/40 to-slate-900/40 p-6 rounded-xl border border-blue-500/50 shadow-lg shadow-blue-500/10">
+                        <h4 class="text-xl font-bold text-blue-200 mb-2">Hydra's Deterministic AI</h4>
+                        <p class="text-slate-300">16x faster. Rigorously accurate. Quantum-inspired compression that guarantees physics.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Technology Section -->
+    <div id="technology" class="py-24 bg-slate-900">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-5xl font-bold text-white mb-6">Tensor-Native Intelligence</h2>
+                <p class="text-xl text-slate-400 max-w-3xl mx-auto">
+                    We don't just run code faster; we changed the math. Our software leverages Tensor Networks—the language of quantum physics and advanced AI—to compress electromagnetic fields without losing data.
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Feature 1 -->
+                <div class="glass-card p-8 rounded-2xl hover:-translate-y-2 transition-transform duration-300">
+                    <div class="w-14 h-14 bg-blue-600 rounded-lg flex items-center justify-center mb-6">
+                        <i class="fas fa-microchip text-2xl text-white"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold text-white mb-4">Algorithmic Compression</h3>
+                    <p class="text-slate-400">
+                        Inspired by quantum many-body physics, we represent complex EM fields as compressed tensor networks, running 16x faster on existing clusters.
+                    </p>
+                </div>
+
+                <!-- Feature 2 -->
+                <div class="glass-card p-8 rounded-2xl hover:-translate-y-2 transition-transform duration-300">
+                    <div class="w-14 h-14 bg-purple-600 rounded-lg flex items-center justify-center mb-6">
+                        <i class="fas fa-brain text-2xl text-white"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold text-white mb-4">Fast AI Training</h3>
+                    <p class="text-slate-400">
+                        We unlock the ability to train other ML models on vast datasets by providing a rigorous "ground truth" at speeds previously impossible.
+                    </p>
+                </div>
+
+                <!-- Feature 3 -->
+                <div class="glass-card p-8 rounded-2xl hover:-translate-y-2 transition-transform duration-300">
+                    <div class="w-14 h-14 bg-emerald-600 rounded-lg flex items-center justify-center mb-6">
+                        <i class="fas fa-check-circle text-2xl text-white"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold text-white mb-4">Zero Hallucinations</h3>
+                    <p class="text-slate-400">
+                        Unlike generative AI that guesses, Hydra solves Maxwell's equations. We offer the certainty of physics with the speed of AI.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Team Section -->
+    <div id="team" class="py-24 bg-slate-950 relative overflow-hidden">
+        <!-- Background decorative blob -->
+        <div class="absolute top-0 right-0 w-1/3 h-full bg-blue-900/5 blur-3xl"></div>
+
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-5xl font-bold text-white mb-4">The Minds Behind the Machine</h2>
+                <p class="text-xl text-slate-400">A fusion of Deep Physics, HPC, and Commercial Strategy.</p>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 justify-items-center">
+                
+                <!-- Dr. Jiri Minar -->
+                <div class="group relative w-full max-w-sm">
+                    <div class="glass-card rounded-2xl overflow-hidden p-6 text-center h-full hover:border-blue-500/50 transition-colors">
+                        <img src="Jiri.png" alt="Dr. Jiří Minář" class="w-32 h-32 rounded-full mx-auto mb-4 object-cover border-2 border-slate-700 group-hover:border-blue-500 transition-colors">
+                        <h3 class="text-xl font-bold text-white">Dr. Jiří Minář</h3>
+                        <p class="text-blue-400 font-medium mb-2">CEO</p>
+                        <p class="text-slate-400 text-sm">Expert in Quantum many-body physics simulations & Optics.</p>
+                    </div>
+                </div>
+
+                <!-- Dr. Juraj Hasik -->
+                <div class="group relative w-full max-w-sm">
+                    <div class="glass-card rounded-2xl overflow-hidden p-6 text-center h-full hover:border-blue-500/50 transition-colors">
+                        <img src="Juraj.png" alt="Dr. Juraj Hašík" class="w-32 h-32 rounded-full mx-auto mb-4 object-cover border-2 border-slate-700 group-hover:border-blue-500 transition-colors">
+                        <h3 class="text-xl font-bold text-white">Dr. Juraj Hašík</h3>
+                        <p class="text-blue-400 font-medium mb-2">CTO</p>
+                        <p class="text-slate-400 text-sm">Specialist in Tensor networks & High-Performance Computing (HPC).</p>
+                    </div>
+                </div>
+
+                <!-- Dr. Bram Van Hecke -->
+                <div class="group relative w-full max-w-sm">
+                    <div class="glass-card rounded-2xl overflow-hidden p-6 text-center h-full hover:border-blue-500/50 transition-colors">
+                        <img src="Bram.png" alt="Dr. Bram Van Hecke" class="w-32 h-32 rounded-full mx-auto mb-4 object-cover border-2 border-slate-700 group-hover:border-blue-500 transition-colors">
+                        <h3 class="text-xl font-bold text-white">Dr. Bram Van Hecke</h3>
+                        <p class="text-blue-400 font-medium mb-2">Chief Scientist</p>
+                        <p class="text-slate-400 text-sm">Expert in Tensor networks, <span class="text-white font-semibold">Machine Learning / AI</span>, and Optics.</p>
+                    </div>
+                </div>
+
+                <!-- Dr. Ilya Kull -->
+                <div class="group relative w-full max-w-sm">
+                    <div class="glass-card rounded-2xl overflow-hidden p-6 text-center h-full hover:border-blue-500/50 transition-colors">
+                        <img src="Ilya.png" alt="Dr. Ilya Kull" class="w-32 h-32 rounded-full mx-auto mb-4 object-cover border-2 border-slate-700 group-hover:border-blue-500 transition-colors">
+                        <h3 class="text-xl font-bold text-white">Dr. Ilya Kull</h3>
+                        <p class="text-blue-400 font-medium mb-2">Chief Engineer</p>
+                        <p class="text-slate-400 text-sm">Focused on Optimization & Quantum many-body physics simulations.</p>
+                    </div>
+                </div>
+
+                <!-- Adv. Tal Tuchman -->
+                <div class="group relative w-full max-w-sm">
+                    <div class="glass-card rounded-2xl overflow-hidden p-6 text-center h-full hover:border-blue-500/50 transition-colors">
+                        <img src="Tal.png" alt="Adv. Tal Tuchman" class="w-32 h-32 rounded-full mx-auto mb-4 object-cover border-2 border-slate-700 group-hover:border-blue-500 transition-colors">
+                        <h3 class="text-xl font-bold text-white">Adv. Tal Tuchman</h3>
+                        <p class="text-blue-400 font-medium mb-2">COO</p>
+                        <p class="text-slate-400 text-sm">Business Development, Go-To-Market Strategy & Legal.</p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <!-- CTA / Contact -->
+    <div id="contact" class="py-24 bg-slate-900">
+        <div class="max-w-4xl mx-auto px-4 text-center">
+            <h2 class="text-3xl font-bold text-white mb-6">Join the Revolution in Physics & AI</h2>
+            <p class="text-slate-400 mb-10 text-lg">
+                We are solving the Angstrom Era's toughest problems. Whether you are a foundry looking for solutions or an engineer looking for a challenge.
+            </p>
+            <form class="max-w-md mx-auto space-y-4">
+                <input type="email" placeholder="Enter your email address" class="w-full px-5 py-3 rounded-lg bg-slate-800 border border-slate-700 text-white placeholder-slate-500 focus:outline-none focus:border-blue-500 transition-colors">
+                <button type="submit" class="w-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-6 rounded-lg transition-all">
+                    Get in Touch
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-slate-950 border-t border-slate-800 py-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row justify-between items-center gap-6">
+            <div class="flex items-center gap-2">
+                <img src="Hydra logo.png" alt="Hydra Logo" class="h-8 w-auto filter invert brightness-200">
+                <span class="text-slate-300 font-semibold tracking-wider">HYDRA</span>
+            </div>
+            <p class="text-slate-500 text-sm">
+                &copy; 2026 Hydra Computing. All rights reserved.
+            </p>
+            <div class="flex space-x-6 text-slate-400">
+                <a href="#" class="hover:text-white transition-colors"><i class="fab fa-linkedin"></i></a>
+                <a href="#" class="hover:text-white transition-colors"><i class="fab fa-twitter"></i></a>
+                <a href="#" class="hover:text-white transition-colors"><i class="fab fa-github"></i></a>
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>
