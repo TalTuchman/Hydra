@@ -3,16 +3,18 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Hydra Computing | The AI Physics Company</title>
+    <title>Hydra Computing | Physics for the Angstrom Era</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.9.1/chart.min.js"></script>
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
         
         body {
             font-family: 'Inter', sans-serif;
             background-color: #020617; /* Slate 950 */
             color: #f8fafc;
+            scroll-behavior: smooth;
         }
 
         /* Custom Gradients */
@@ -30,6 +32,24 @@
             background: rgba(255, 255, 255, 0.03);
             backdrop-filter: blur(10px);
             border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .glass-card-hover:hover {
+            background: rgba(255, 255, 255, 0.07);
+            border-color: rgba(59, 130, 246, 0.5);
+            transform: translateY(-2px);
+        }
+
+        /* Modal Styles */
+        .modal {
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease-in-out;
+        }
+        .modal.active {
+            opacity: 1;
+            visibility: visible;
         }
     </style>
 </head>
@@ -41,15 +61,16 @@
             <div class="flex items-center justify-between h-20">
                 <div class="flex-shrink-0 flex items-center gap-3">
                     <!-- Logo Image -->
-                    <img src="Hydra logo.png" alt="Hydra Computing Logo" class="h-12 w-auto filter invert brightness-200">
+                    <img src="Hydra logo.png" alt="Hydra Computing Logo" class="h-10 w-auto filter invert brightness-200">
                     <span class="font-bold text-xl tracking-wider text-white">HYDRA</span>
                 </div>
                 <div class="hidden md:block">
                     <div class="ml-10 flex items-baseline space-x-8">
                         <a href="#mission" class="hover:text-blue-400 transition-colors px-3 py-2 rounded-md text-sm font-medium">Mission</a>
                         <a href="#technology" class="hover:text-blue-400 transition-colors px-3 py-2 rounded-md text-sm font-medium">Technology</a>
+                        <a href="#products" class="hover:text-blue-400 transition-colors px-3 py-2 rounded-md text-sm font-medium">POC Results</a>
                         <a href="#team" class="hover:text-blue-400 transition-colors px-3 py-2 rounded-md text-sm font-medium">Team</a>
-                        <a href="#contact" class="bg-blue-600 hover:bg-blue-700 text-white px-5 py-2 rounded-full text-sm font-medium transition-all">Contact Us</a>
+                        <a href="#contact" class="bg-blue-600 hover:bg-blue-700 text-white px-5 py-2 rounded-full text-sm font-medium transition-all shadow-lg shadow-blue-900/20">Contact Us</a>
                     </div>
                 </div>
             </div>
@@ -67,51 +88,52 @@
         <div class="relative z-10 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
             <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full glass-card mb-8">
                 <span class="w-2 h-2 bg-blue-500 rounded-full animate-ping"></span>
-                <span class="text-blue-200 text-sm font-medium">Entering the Angstrom Era</span>
+                <span class="text-blue-200 text-xs uppercase tracking-widest font-semibold">Entering the Angstrom Era</span>
             </div>
-            <h1 class="text-5xl md:text-7xl font-bold tracking-tight mb-6 bg-clip-text text-transparent bg-gradient-to-r from-blue-100 to-blue-400">
-                The AI Physics Company
+            <h1 class="text-4xl md:text-6xl font-bold tracking-tight mb-6 text-white leading-tight">
+                Physics Company for the Angstrom era <br/>
+                <span class="bg-clip-text text-transparent bg-gradient-to-r from-blue-200 to-blue-500">at the age of AI and Quantum</span>
             </h1>
-            <p class="mt-4 text-xl md:text-2xl text-slate-300 max-w-3xl mx-auto leading-relaxed">
-                Solving the "Computational Complexity Wall" of 2nm manufacturing with <span class="text-white font-semibold">Deterministic AI</span> and Tensor Network compression.
+            <p class="mt-6 text-xl md:text-2xl text-slate-300 max-w-4xl mx-auto leading-relaxed font-light">
+                Solving the "Computational Complexity Wall" of semiconductor manufacturing with <span class="text-white font-medium">Tensor Networks</span> and AI.
             </p>
             <div class="mt-10 flex justify-center gap-4">
-                <a href="#technology" class="bg-blue-600 hover:bg-blue-700 text-white px-8 py-4 rounded-lg font-semibold text-lg transition-all shadow-lg shadow-blue-900/50">
+                <a href="#technology" class="bg-blue-600 hover:bg-blue-700 text-white px-8 py-4 rounded-lg font-semibold text-lg transition-all shadow-lg shadow-blue-900/50 hover:shadow-blue-600/30">
                     Discover Our Engine
                 </a>
-                <a href="#team" class="glass-card hover:bg-white/5 text-white px-8 py-4 rounded-lg font-semibold text-lg transition-all">
-                    Meet the Team
+                <a href="#products" class="glass-card hover:bg-white/5 text-white px-8 py-4 rounded-lg font-semibold text-lg transition-all">
+                    View Solutions
                 </a>
             </div>
         </div>
     </div>
 
-    <!-- The Problem / AI Positioning -->
-    <div id="mission" class="py-24 bg-slate-950 relative">
+    <!-- The Challenge Section -->
+    <div id="mission" class="py-24 bg-slate-950 relative border-t border-slate-900">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
                 <div>
-                    <h2 class="text-blue-500 font-semibold tracking-wide uppercase mb-3">The Challenge</h2>
-                    <h3 class="text-4xl font-bold text-white mb-6">The Wall at 2nm</h3>
-                    <p class="text-slate-400 text-lg mb-6">
-                        As chips shrink to the Angstrom scale, traditional simulation methods (FDTD, RCWA) have hit a computational bottleneck. They are too slow for the billions of polygons in a modern mask set.
+                    <h2 class="text-blue-500 font-bold text-sm tracking-widest uppercase mb-3">The Challenge</h2>
+                    <h3 class="text-4xl font-bold text-white mb-6">The Wall at Angstrom Scale</h3>
+                    <p class="text-slate-400 text-lg mb-6 leading-relaxed">
+                        Cutting-edge chips are approaching the Angstrom scale at fast pace. Traditional simulation methods (FDTD, RCWA) critical for their fabrication hit a computational bottleneck.
                     </p>
-                    <p class="text-slate-400 text-lg">
-                        The industry's current fallback is "Probabilistic AI"—models that guess the physics. But at 2nm, a guess is a gamble that leads to dead transistors.
+                    <p class="text-slate-400 text-lg leading-relaxed">
+                        The industry's hope is "Probabilistic AI". But a wrong guess leads to dead transistors, multimillion dollar losses and weeks of delay. Accuracy is the key.
                     </p>
                 </div>
                 <div class="grid grid-cols-1 gap-6">
-                    <div class="glass-card p-6 rounded-xl border-l-4 border-blue-500">
+                    <div class="glass-card p-6 rounded-xl border-l-4 border-slate-600">
                         <h4 class="text-xl font-bold text-white mb-2">Legacy Solvers</h4>
-                        <p class="text-slate-400">Brute force. Slow. Exponentially expensive hardware costs.</p>
+                        <p class="text-slate-400">Brute force methods that struggle to scale with the complexity of modern mask sets.</p>
                     </div>
                     <div class="glass-card p-6 rounded-xl border-l-4 border-red-500">
                         <h4 class="text-xl font-bold text-white mb-2">Probabilistic AI</h4>
-                        <p class="text-slate-400">Fast, but approximates reality. High risk of "hallucinating" physical interactions.</p>
+                        <p class="text-slate-400">Risk of wrong predictions. Crucially, needs verification.</p>
                     </div>
-                    <div class="bg-gradient-to-r from-blue-900/40 to-slate-900/40 p-6 rounded-xl border border-blue-500/50 shadow-lg shadow-blue-500/10">
-                        <h4 class="text-xl font-bold text-blue-200 mb-2">Hydra's Deterministic AI</h4>
-                        <p class="text-slate-300">16x faster. Rigorously accurate. Quantum-inspired compression that guarantees physics.</p>
+                    <div class="bg-gradient-to-r from-blue-900/20 to-slate-900/40 p-6 rounded-xl border border-blue-500/30 shadow-lg shadow-blue-500/5 border-l-4 border-l-blue-500">
+                        <h4 class="text-xl font-bold text-blue-200 mb-2">Hydra's Solution</h4>
+                        <p class="text-slate-300">Rigorous and scalable beyond what is currently possible powered by quantum-inspired algorithms.</p>
                     </div>
                 </div>
             </div>
@@ -123,108 +145,165 @@
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-16">
                 <h2 class="text-3xl md:text-5xl font-bold text-white mb-6">Tensor-Native Intelligence</h2>
-                <p class="text-xl text-slate-400 max-w-3xl mx-auto">
-                    We don't just run code faster; we changed the math. Our software leverages Tensor Networks—the language of quantum physics and advanced AI—to compress electromagnetic fields without losing data.
+                <p class="text-xl text-slate-400 max-w-3xl mx-auto mb-6">
+                    We don't just run code faster; we changed the math. Our software leverages Tensor Networks—the language of quantum physics—to compress electromagnetic fields without losing data.
+                </p>
+                <p class="text-lg text-blue-400 font-medium inline-block border-b border-blue-900 pb-1">
+                    With key industrial players, we are establishing new standards.
                 </p>
             </div>
 
             <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
                 <!-- Feature 1 -->
-                <div class="glass-card p-8 rounded-2xl hover:-translate-y-2 transition-transform duration-300">
-                    <div class="w-14 h-14 bg-blue-600 rounded-lg flex items-center justify-center mb-6">
-                        <i class="fas fa-microchip text-2xl text-white"></i>
+                <div class="glass-card p-8 rounded-2xl hover:bg-slate-800/50 transition-colors">
+                    <div class="w-14 h-14 bg-blue-600/20 text-blue-400 rounded-lg flex items-center justify-center mb-6 border border-blue-500/30">
+                        <i class="fas fa-microchip text-2xl"></i>
                     </div>
-                    <h3 class="text-2xl font-bold text-white mb-4">Algorithmic Compression</h3>
-                    <p class="text-slate-400">
-                        Inspired by quantum many-body physics, we represent complex EM fields as compressed tensor networks, running 16x faster on existing clusters.
+                    <h3 class="text-xl font-bold text-white mb-4">Algorithmic Compression</h3>
+                    <p class="text-slate-400 leading-relaxed">
+                        Inspired by quantum many-body physics, we represent complex EM fields as compressed tensor networks.
                     </p>
                 </div>
 
                 <!-- Feature 2 -->
-                <div class="glass-card p-8 rounded-2xl hover:-translate-y-2 transition-transform duration-300">
-                    <div class="w-14 h-14 bg-purple-600 rounded-lg flex items-center justify-center mb-6">
-                        <i class="fas fa-brain text-2xl text-white"></i>
+                <div class="glass-card p-8 rounded-2xl hover:bg-slate-800/50 transition-colors">
+                    <div class="w-14 h-14 bg-purple-600/20 text-purple-400 rounded-lg flex items-center justify-center mb-6 border border-purple-500/30">
+                        <i class="fas fa-brain text-2xl"></i>
                     </div>
-                    <h3 class="text-2xl font-bold text-white mb-4">Fast AI Training</h3>
-                    <p class="text-slate-400">
-                        We unlock the ability to train other ML models on vast datasets by providing a rigorous "ground truth" at speeds previously impossible.
+                    <h3 class="text-xl font-bold text-white mb-4">Fast AI Training</h3>
+                    <p class="text-slate-400 leading-relaxed">
+                        We unlock the ability to train other ML models on vast datasets by providing a rigorous "ground truth".
                     </p>
                 </div>
 
                 <!-- Feature 3 -->
-                <div class="glass-card p-8 rounded-2xl hover:-translate-y-2 transition-transform duration-300">
-                    <div class="w-14 h-14 bg-emerald-600 rounded-lg flex items-center justify-center mb-6">
-                        <i class="fas fa-check-circle text-2xl text-white"></i>
+                <div class="glass-card p-8 rounded-2xl hover:bg-slate-800/50 transition-colors">
+                    <div class="w-14 h-14 bg-emerald-600/20 text-emerald-400 rounded-lg flex items-center justify-center mb-6 border border-emerald-500/30">
+                        <i class="fas fa-check-circle text-2xl"></i>
                     </div>
-                    <h3 class="text-2xl font-bold text-white mb-4">Zero Hallucinations</h3>
-                    <p class="text-slate-400">
-                        Unlike generative AI that guesses, Hydra solves Maxwell's equations. We offer the certainty of physics with the speed of AI.
+                    <h3 class="text-xl font-bold text-white mb-4">Precision & Scale</h3>
+                    <p class="text-slate-400 leading-relaxed">
+                         Unlike generative models that guess, Hydra solves Maxwell's equations at unmatched scales and accuracy.
                     </p>
                 </div>
             </div>
         </div>
     </div>
 
+    <!-- Products Section -->
+    <div id="products" class="py-20 bg-slate-950 border-t border-slate-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="text-3xl font-bold text-white mb-10 pl-4 border-l-4 border-blue-500">POC Results</h2>
+            
+            <div class="glass-card glass-card-hover p-8 rounded-2xl cursor-pointer group" onclick="toggleModal()">
+                <div class="flex flex-col md:flex-row items-center justify-between gap-6">
+                    <div class="flex-1">
+                        <div class="flex items-center gap-3 mb-2">
+                            <span class="px-2 py-1 text-xs font-bold bg-blue-900/50 text-blue-300 rounded uppercase tracking-wider border border-blue-800">Flagship</span>
+                        </div>
+                        <h3 class="text-2xl font-bold text-white mb-2 group-hover:text-blue-400 transition-colors">Tensor-Network Powered Maxwell Solver</h3>
+                        <p class="text-slate-400 mb-4">High-NA Lithography Simulation Engine</p>
+                        <p class="text-sm text-slate-500 italic">Click to view performance benchmarks.</p>
+                    </div>
+                    <div class="flex items-center justify-center w-full md:w-auto">
+                        <button class="px-6 py-3 bg-slate-800 hover:bg-blue-600 text-white rounded-lg transition-all flex items-center gap-2 group-hover:bg-blue-600">
+                            View Data <i class="fas fa-chart-line"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <!-- Team Section -->
-    <div id="team" class="py-24 bg-slate-950 relative overflow-hidden">
+    <div id="team" class="py-24 bg-slate-900 relative overflow-hidden">
         <!-- Background decorative blob -->
-        <div class="absolute top-0 right-0 w-1/3 h-full bg-blue-900/5 blur-3xl"></div>
+        <div class="absolute top-0 right-0 w-1/3 h-full bg-blue-900/5 blur-3xl pointer-events-none"></div>
 
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
             <div class="text-center mb-16">
-                <h2 class="text-3xl md:text-5xl font-bold text-white mb-4">The Minds Behind the Machine</h2>
-                <p class="text-xl text-slate-400">A fusion of Deep Physics, HPC, and Commercial Strategy.</p>
+                <h2 class="text-3xl md:text-5xl font-bold text-white mb-4">The Team</h2>
+                <p class="text-xl text-slate-400">Deep Physics, HPC, and Commercial Execution.</p>
             </div>
 
             <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 justify-items-center">
                 
                 <!-- Dr. Jiri Minar -->
                 <div class="group relative w-full max-w-sm">
-                    <div class="glass-card rounded-2xl overflow-hidden p-6 text-center h-full hover:border-blue-500/50 transition-colors">
-                        <img src="Jiri.png" alt="Dr. Jiří Minář" class="w-32 h-32 rounded-full mx-auto mb-4 object-cover border-2 border-slate-700 group-hover:border-blue-500 transition-colors">
+                    <div class="glass-card rounded-2xl overflow-hidden p-6 text-center h-full hover:border-blue-500/50 transition-colors flex flex-col items-center">
+                        <div class="w-32 h-32 rounded-full mb-4 p-1 border-2 border-slate-700 group-hover:border-blue-500 transition-colors overflow-hidden">
+                             <img src="Jiri.png" alt="Dr. Jiří Minář" class="w-full h-full object-cover rounded-full">
+                        </div>
                         <h3 class="text-xl font-bold text-white">Dr. Jiří Minář</h3>
-                        <p class="text-blue-400 font-medium mb-2">CEO</p>
-                        <p class="text-slate-400 text-sm">Expert in Quantum many-body physics simulations & Optics.</p>
+                        <p class="text-blue-400 font-medium mb-2 text-sm uppercase tracking-wide">CEO</p>
+                        <p class="text-slate-400 text-sm mb-6 flex-grow">Quantum many-body physics simulations, Optics</p>
+                        <div class="flex justify-center gap-4 mt-auto pt-4 border-t border-slate-800 w-full">
+                            <a href="#" class="text-slate-500 hover:text-white transition-colors" title="LinkedIn"><i class="fab fa-linkedin text-lg"></i></a>
+                            <a href="#" class="text-slate-500 hover:text-white transition-colors" title="Google Scholar"><i class="fas fa-graduation-cap text-lg"></i></a>
+                        </div>
                     </div>
                 </div>
 
                 <!-- Dr. Juraj Hasik -->
                 <div class="group relative w-full max-w-sm">
-                    <div class="glass-card rounded-2xl overflow-hidden p-6 text-center h-full hover:border-blue-500/50 transition-colors">
-                        <img src="Juraj.png" alt="Dr. Juraj Hašík" class="w-32 h-32 rounded-full mx-auto mb-4 object-cover border-2 border-slate-700 group-hover:border-blue-500 transition-colors">
+                    <div class="glass-card rounded-2xl overflow-hidden p-6 text-center h-full hover:border-blue-500/50 transition-colors flex flex-col items-center">
+                        <div class="w-32 h-32 rounded-full mb-4 p-1 border-2 border-slate-700 group-hover:border-blue-500 transition-colors overflow-hidden">
+                            <img src="Juraj.png" alt="Dr. Juraj Hašík" class="w-full h-full object-cover rounded-full">
+                        </div>
                         <h3 class="text-xl font-bold text-white">Dr. Juraj Hašík</h3>
-                        <p class="text-blue-400 font-medium mb-2">CTO</p>
-                        <p class="text-slate-400 text-sm">Specialist in Tensor networks & High-Performance Computing (HPC).</p>
+                        <p class="text-blue-400 font-medium mb-2 text-sm uppercase tracking-wide">CTO</p>
+                        <p class="text-slate-400 text-sm mb-6 flex-grow">Tensor networks, High-Performance Computing (HPC)</p>
+                        <div class="flex justify-center gap-4 mt-auto pt-4 border-t border-slate-800 w-full">
+                            <a href="#" class="text-slate-500 hover:text-white transition-colors" title="LinkedIn"><i class="fab fa-linkedin text-lg"></i></a>
+                            <a href="#" class="text-slate-500 hover:text-white transition-colors" title="Google Scholar"><i class="fas fa-graduation-cap text-lg"></i></a>
+                        </div>
                     </div>
                 </div>
 
                 <!-- Dr. Bram Van Hecke -->
                 <div class="group relative w-full max-w-sm">
-                    <div class="glass-card rounded-2xl overflow-hidden p-6 text-center h-full hover:border-blue-500/50 transition-colors">
-                        <img src="Bram.png" alt="Dr. Bram Van Hecke" class="w-32 h-32 rounded-full mx-auto mb-4 object-cover border-2 border-slate-700 group-hover:border-blue-500 transition-colors">
+                    <div class="glass-card rounded-2xl overflow-hidden p-6 text-center h-full hover:border-blue-500/50 transition-colors flex flex-col items-center">
+                        <div class="w-32 h-32 rounded-full mb-4 p-1 border-2 border-slate-700 group-hover:border-blue-500 transition-colors overflow-hidden">
+                            <img src="Bram.png" alt="Dr. Bram Van Hecke" class="w-full h-full object-cover rounded-full">
+                        </div>
                         <h3 class="text-xl font-bold text-white">Dr. Bram Van Hecke</h3>
-                        <p class="text-blue-400 font-medium mb-2">Chief Scientist</p>
-                        <p class="text-slate-400 text-sm">Expert in Tensor networks, <span class="text-white font-semibold">Machine Learning / AI</span>, and Optics.</p>
+                        <p class="text-blue-400 font-medium mb-2 text-sm uppercase tracking-wide">Chief Scientist</p>
+                        <p class="text-slate-400 text-sm mb-6 flex-grow">Tensor networks, Machine Learning / AI, Optics</p>
+                        <div class="flex justify-center gap-4 mt-auto pt-4 border-t border-slate-800 w-full">
+                            <a href="#" class="text-slate-500 hover:text-white transition-colors" title="LinkedIn"><i class="fab fa-linkedin text-lg"></i></a>
+                            <a href="#" class="text-slate-500 hover:text-white transition-colors" title="Google Scholar"><i class="fas fa-graduation-cap text-lg"></i></a>
+                        </div>
                     </div>
                 </div>
 
                 <!-- Dr. Ilya Kull -->
                 <div class="group relative w-full max-w-sm">
-                    <div class="glass-card rounded-2xl overflow-hidden p-6 text-center h-full hover:border-blue-500/50 transition-colors">
-                        <img src="Ilya.png" alt="Dr. Ilya Kull" class="w-32 h-32 rounded-full mx-auto mb-4 object-cover border-2 border-slate-700 group-hover:border-blue-500 transition-colors">
+                    <div class="glass-card rounded-2xl overflow-hidden p-6 text-center h-full hover:border-blue-500/50 transition-colors flex flex-col items-center">
+                        <div class="w-32 h-32 rounded-full mb-4 p-1 border-2 border-slate-700 group-hover:border-blue-500 transition-colors overflow-hidden">
+                            <img src="Ilya.png" alt="Dr. Ilya Kull" class="w-full h-full object-cover rounded-full">
+                        </div>
                         <h3 class="text-xl font-bold text-white">Dr. Ilya Kull</h3>
-                        <p class="text-blue-400 font-medium mb-2">Chief Engineer</p>
-                        <p class="text-slate-400 text-sm">Focused on Optimization & Quantum many-body physics simulations.</p>
+                        <p class="text-blue-400 font-medium mb-2 text-sm uppercase tracking-wide">Chief Engineer</p>
+                        <p class="text-slate-400 text-sm mb-6 flex-grow">Optimization, Quantum many-body physics simulations</p>
+                        <div class="flex justify-center gap-4 mt-auto pt-4 border-t border-slate-800 w-full">
+                            <a href="#" class="text-slate-500 hover:text-white transition-colors" title="LinkedIn"><i class="fab fa-linkedin text-lg"></i></a>
+                            <a href="#" class="text-slate-500 hover:text-white transition-colors" title="Google Scholar"><i class="fas fa-graduation-cap text-lg"></i></a>
+                        </div>
                     </div>
                 </div>
 
                 <!-- Adv. Tal Tuchman -->
                 <div class="group relative w-full max-w-sm">
-                    <div class="glass-card rounded-2xl overflow-hidden p-6 text-center h-full hover:border-blue-500/50 transition-colors">
-                        <img src="Tal.png" alt="Adv. Tal Tuchman" class="w-32 h-32 rounded-full mx-auto mb-4 object-cover border-2 border-slate-700 group-hover:border-blue-500 transition-colors">
+                    <div class="glass-card rounded-2xl overflow-hidden p-6 text-center h-full hover:border-blue-500/50 transition-colors flex flex-col items-center">
+                        <div class="w-32 h-32 rounded-full mb-4 p-1 border-2 border-slate-700 group-hover:border-blue-500 transition-colors overflow-hidden">
+                            <img src="Tal.png" alt="Adv. Tal Tuchman" class="w-full h-full object-cover rounded-full">
+                        </div>
                         <h3 class="text-xl font-bold text-white">Adv. Tal Tuchman</h3>
-                        <p class="text-blue-400 font-medium mb-2">COO</p>
-                        <p class="text-slate-400 text-sm">Business Development, Go-To-Market Strategy & Legal.</p>
+                        <p class="text-blue-400 font-medium mb-2 text-sm uppercase tracking-wide">COO</p>
+                        <p class="text-slate-400 text-sm mb-6 flex-grow">Business Development, GTM, Legal</p>
+                        <div class="flex justify-center gap-4 mt-auto pt-4 border-t border-slate-800 w-full">
+                            <a href="#" class="text-slate-500 hover:text-white transition-colors" title="LinkedIn"><i class="fab fa-linkedin text-lg"></i></a>
+                        </div>
                     </div>
                 </div>
 
@@ -233,18 +312,21 @@
     </div>
 
     <!-- CTA / Contact -->
-    <div id="contact" class="py-24 bg-slate-900">
+    <div id="contact" class="py-24 bg-slate-950">
         <div class="max-w-4xl mx-auto px-4 text-center">
-            <h2 class="text-3xl font-bold text-white mb-6">Join the Revolution in Physics & AI</h2>
+            <h2 class="text-3xl font-bold text-white mb-6">Contact Us</h2>
             <p class="text-slate-400 mb-10 text-lg">
-                We are solving the Angstrom Era's toughest problems. Whether you are a foundry looking for solutions or an engineer looking for a challenge.
+                We are solving the Angstrom Era's toughest problems. 
             </p>
-            <form class="max-w-md mx-auto space-y-4">
-                <input type="email" placeholder="Enter your email address" class="w-full px-5 py-3 rounded-lg bg-slate-800 border border-slate-700 text-white placeholder-slate-500 focus:outline-none focus:border-blue-500 transition-colors">
-                <button type="submit" class="w-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-6 rounded-lg transition-all">
+            <form class="max-w-md mx-auto space-y-4" onsubmit="handleContact(event)">
+                <input type="email" placeholder="Enter your email address" required class="w-full px-5 py-3 rounded-lg bg-slate-800 border border-slate-700 text-white placeholder-slate-500 focus:outline-none focus:border-blue-500 transition-colors">
+                <button type="submit" id="contact-btn" class="w-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-6 rounded-lg transition-all shadow-lg shadow-blue-900/30">
                     Get in Touch
                 </button>
             </form>
+            <div id="contact-success" class="mt-4 hidden p-4 bg-green-900/20 border border-green-500/30 rounded-lg text-green-400">
+                <i class="fas fa-check-circle mr-2"></i> Thank you! We will be in touch shortly.
+            </div>
         </div>
     </div>
 
@@ -261,10 +343,152 @@
             <div class="flex space-x-6 text-slate-400">
                 <a href="#" class="hover:text-white transition-colors"><i class="fab fa-linkedin"></i></a>
                 <a href="#" class="hover:text-white transition-colors"><i class="fab fa-twitter"></i></a>
-                <a href="#" class="hover:text-white transition-colors"><i class="fab fa-github"></i></a>
             </div>
         </div>
     </footer>
 
+    <!-- Performance Modal -->
+    <div id="perfModal" class="fixed inset-0 z-[100] modal flex items-center justify-center p-4">
+        <!-- Backdrop -->
+        <div class="absolute inset-0 bg-black/80 backdrop-blur-sm" onclick="toggleModal()"></div>
+        
+        <!-- Content -->
+        <div class="relative bg-slate-900 border border-slate-700 rounded-2xl max-w-4xl w-full p-8 shadow-2xl overflow-hidden">
+            <button onclick="toggleModal()" class="absolute top-4 right-4 text-slate-400 hover:text-white z-10 p-2">
+                <i class="fas fa-times text-xl"></i>
+            </button>
+            
+            <div class="flex flex-col h-full">
+                <div class="mb-6">
+                    <h3 class="text-2xl font-bold text-white mb-1">Benchmarks: Maxwell Solver</h3>
+                    <p class="text-blue-400 text-sm font-medium">Comparison: Tensor Network vs. Legacy FDTD/RCWA</p>
+                </div>
+                
+                <!-- Chart Container -->
+                <div class="w-full h-80 bg-slate-800/50 rounded-xl border border-slate-700 p-4 relative">
+                     <canvas id="perfChart"></canvas>
+                </div>
+                
+                <div class="mt-6 flex justify-between items-center">
+                    <p class="text-xs text-slate-500">Data source: Internal validation on standard dielectric scattering masks.</p>
+                    <button onclick="toggleModal()" class="px-6 py-2 bg-slate-800 hover:bg-slate-700 text-white rounded-lg transition-colors text-sm font-medium border border-slate-700">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Modal Logic
+        function toggleModal() {
+            const modal = document.getElementById('perfModal');
+            modal.classList.toggle('active');
+            
+            // Initialize chart only when modal opens first time
+            if(modal.classList.contains('active') && !window.chartInitialized) {
+                // Small delay to ensure canvas is visible
+                setTimeout(initChart, 100);
+                window.chartInitialized = true;
+            }
+        }
+
+        // Contact Form Logic
+        function handleContact(e) {
+            e.preventDefault();
+            const btn = document.getElementById('contact-btn');
+            const originalText = btn.innerText;
+            
+            btn.innerHTML = '<i class="fas fa-circle-notch fa-spin"></i> Sending...';
+            btn.disabled = true;
+            
+            setTimeout(() => {
+                document.querySelector('form').reset();
+                btn.innerText = "Message Sent";
+                btn.classList.add('bg-green-600', 'hover:bg-green-600');
+                btn.classList.remove('bg-blue-600', 'hover:bg-blue-700');
+                
+                document.getElementById('contact-success').classList.remove('hidden');
+                
+                // Reset button after 3 seconds
+                setTimeout(() => {
+                    btn.innerText = originalText;
+                    btn.disabled = false;
+                    btn.classList.remove('bg-green-600', 'hover:bg-green-600');
+                    btn.classList.add('bg-blue-600', 'hover:bg-blue-700');
+                }, 3000);
+            }, 1500);
+        }
+
+        // Chart Initialization (Simulating the plot from the slides)
+        function initChart() {
+            const ctx = document.getElementById('perfChart').getContext('2d');
+            
+            // Gradient for the line
+            let gradient = ctx.createLinearGradient(0, 0, 0, 400);
+            gradient.addColorStop(0, 'rgba(59, 130, 246, 0.5)');
+            gradient.addColorStop(1, 'rgba(59, 130, 246, 0.0)');
+
+            new Chart(ctx, {
+                type: 'line',
+                data: {
+                    // Simulating grid size N
+                    labels: ['100', '200', '300', '400', '500', '600', '700', '800', '900', '1000'],
+                    datasets: [{
+                        label: 'Hydra Solver Accuracy (Log Scale)',
+                        // Logarithmic descent similar to slide data
+                        data: [0.1, 0.05, 0.01, 0.005, 0.001, 0.0005, 0.0001, 0.00005, 0.00001, 0.000005],
+                        borderColor: '#3b82f6',
+                        backgroundColor: gradient,
+                        borderWidth: 3,
+                        pointBackgroundColor: '#1e293b',
+                        pointBorderColor: '#3b82f6',
+                        pointHoverBackgroundColor: '#fff',
+                        fill: true,
+                        tension: 0.4
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    interaction: {
+                        mode: 'index',
+                        intersect: false,
+                    },
+                    plugins: {
+                        legend: {
+                            labels: { color: '#94a3b8' }
+                        },
+                        tooltip: {
+                            backgroundColor: 'rgba(15, 23, 42, 0.9)',
+                            titleColor: '#fff',
+                            bodyColor: '#cbd5e1',
+                            borderColor: 'rgba(59, 130, 246, 0.2)',
+                            borderWidth: 1
+                        }
+                    },
+                    scales: {
+                        y: {
+                            type: 'logarithmic',
+                            grid: { color: 'rgba(148, 163, 184, 0.1)' },
+                            ticks: { color: '#94a3b8' },
+                            title: {
+                                display: true,
+                                text: 'Error Magnitude (Relative)',
+                                color: '#64748b'
+                            }
+                        },
+                        x: {
+                            grid: { color: 'rgba(148, 163, 184, 0.1)' },
+                            ticks: { color: '#94a3b8' },
+                            title: {
+                                display: true,
+                                text: 'Linear Grid Size (N)',
+                                color: '#64748b'
+                            }
+                        }
+                    }
+                }
+            });
+        }
+    </script>
 </body>
 </html>
